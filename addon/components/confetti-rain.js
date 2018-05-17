@@ -37,11 +37,11 @@ function randomFromTo(from, to) {
   return Math.floor(random() * (to - from + 1) + from);
 }
 
-function ConfettiParticle({ color, width, height, ctx }) {
+function ConfettiParticle({ color, width, height, ctx, maxParticles }) {
   this.x = random() * width; // x-coordinate
   this.y = (random() * height) - height; //y-coordinate
   this.r = randomFromTo(10, 30); //radius;
-  this.d = (random() * MAX_PARTICLES) + 10; //density;
+  this.d = (random() * maxParticles) + 10; //density;
   this.color = color;
   this.tilt = Math.floor(random() * 10) - 10;
   this.tiltAngleIncremental = (random() * 0.07) + 0.05;
@@ -99,7 +99,8 @@ export default Component.extend({
         color: colorGenerator.getColor(),
         width: this.get('windowWidth'),
         height: this.get('windowHeight'),
-        ctx: this.get('context')
+        ctx: this.get('context'),
+        maxParticles: this.get('maxParticles')
       }));
     }
 
