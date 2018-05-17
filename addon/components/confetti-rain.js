@@ -75,6 +75,7 @@ const colorGenerator = {
 export default Component.extend({
   tagName: 'canvas',
   attributeBindings: ['style'],
+  maxParticles: MAX_PARTICLES,
 
   style: computed(function() {
     return htmlSafe(`
@@ -93,7 +94,7 @@ export default Component.extend({
   particles: computed(function() {
     let particles = [];
 
-    for (var i = 0; i < MAX_PARTICLES; i++) {
+    for (var i = 0; i < this.get('maxParticles); i++) {
       particles.push(new ConfettiParticle({
         color: colorGenerator.getColor(),
         width: this.get('windowWidth'),
@@ -142,7 +143,7 @@ export default Component.extend({
     this.incrementProperty('angle', 0.01);
     this.incrementProperty('tiltAngle', 0.1);
 
-    for (var i = 0; i < MAX_PARTICLES; i++) {
+    for (var i = 0; i < this.get('maxParticles'); i++) {
       particle = this.get('particles')[i];
       this.stepParticle(particle, i);
       this.checkForReposition(particle, i);
