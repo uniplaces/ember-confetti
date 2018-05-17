@@ -94,7 +94,7 @@ export default Component.extend({
   particles: computed(function() {
     let particles = [];
 
-    for (var i = 0; i < this.get('maxParticles); i++) {
+    for (var i = 0; i < this.get('maxParticles'); i++) {
       particles.push(new ConfettiParticle({
         color: colorGenerator.getColor(),
         width: this.get('windowWidth'),
